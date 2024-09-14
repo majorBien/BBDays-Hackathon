@@ -10,9 +10,14 @@
 
 
 // LoraWAN Send task
-#define LORA_SEND_STACK_SIZE		4096
-#define LORA_SEND_PRIORITY			5
-#define LORA_SEND_CORE_ID			0
+#define LORA_SEND_STACK_SIZE				4096
+#define LORA_SEND_PRIORITY					5
+#define LORA_SEND_CORE_ID					0
+
+//LoraWAN Receive task
+#define LORA_RECEIVE_STACK_SIZE				4086
+#define LORA_RECEIVE_PRIORITY				6
+#define LORA_RECEIVE_CORE_ID				0	
 
 // WiFi application task
 #define WIFI_APP_TASK_STACK_SIZE			4096

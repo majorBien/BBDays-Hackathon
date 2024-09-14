@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "lora",
-    "project_version":    "0aa950a-dirty",
+    "project_version":    "13538b4-dirty",
     "project_path":       "/home/majorbien/eclipse-workspace/LoraFirstAidKit",
     "idf_path":           "/opt/esp-idf",
     "build_dir":          "/home/majorbien/eclipse-workspace/LoraFirstAidKit/build",
@@ -805,7 +805,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/majorbien/eclipse-workspace/LoraFirstAidKit/build/esp-idf/main/libmain.a",
-            "sources": [ "/home/majorbien/eclipse-workspace/LoraFirstAidKit/main/main.c", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/main/lora.c" ],
+            "sources": [ "/home/majorbien/eclipse-workspace/LoraFirstAidKit/main/main.c", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/main/lora.c", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/main/wifi.c" ],
             "include_dirs": [ "." ]
         },
         "mbedtls": {
