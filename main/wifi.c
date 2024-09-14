@@ -42,11 +42,15 @@ static void wifi_app_event_handler(void *arg, esp_event_base_t event_base, int32
 				break;
 
 			case WIFI_EVENT_AP_STACONNECTED:
+				openFirstAidKit=1;
 				ESP_LOGI(TAG, "WIFI_EVENT_AP_STACONNECTED");
+				ESP_LOGI(TAG,"FIRST_AID_LOCK_STATE: %d", openFirstAidKit);
 				break;
 
 			case WIFI_EVENT_AP_STADISCONNECTED:
+				openFirstAidKit=0;
 				ESP_LOGI(TAG, "WIFI_EVENT_AP_STADISCONNECTED");
+				ESP_LOGI(TAG, "FIRST_AID_LOCK_STATE: %d", openFirstAidKit);
 				break;
 
 			case WIFI_EVENT_STA_START:

@@ -34,4 +34,9 @@
 #define HTTP_SERVER_MONITOR_PRIORITY		2
 #define HTTP_SERVER_MONITOR_CORE_ID			1
 
+// HTTP Server Monitor task
+#define GPIO_STACK_SIZE						1024
+#define GPIO_PRIORITY						7
+#define GPIO_CORE_ID						1
+
 #endif /* MAIN_TASKS_SETTINGS_H_ */

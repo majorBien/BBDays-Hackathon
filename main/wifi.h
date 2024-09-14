@@ -36,6 +36,7 @@ typedef void (*wifi_connected_event_callback_t)(void);
 
 extern esp_netif_t* esp_netif_sta;
 extern esp_netif_t* esp_netif_ap;
+extern bool openFirstAidKit;
 
 typedef enum wifi_app_message
 {

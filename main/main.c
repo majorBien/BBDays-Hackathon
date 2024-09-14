@@ -12,12 +12,14 @@
 #include "lora.h"
 #include "nvs_flash.h"
 #include "wifi.h"
+#include "gpio.h"
 
 static const char *TAG = "MAIN";
 
 
 void app_main()
 {
+	//openFirstAidKit = 0;
 	ESP_LOGI(TAG, "APP START");
 	esp_err_t ret = nvs_flash_init();
 	if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND)
@@ -28,7 +30,10 @@ void app_main()
 	ESP_ERROR_CHECK(ret);
 	
 	loraInit();
+	gpioConfig();
+		
 	loraTaskStart();	
+	gpioTaskStart();
 	wifi_app_start();
 }
 
