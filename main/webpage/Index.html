@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <script src="jquery.js"></script>
+</head>
+
+<body style="background-color: rgb(218, 218, 218); margin: auto; text-align: center;">
+    <header id="header">
+        <h1>Apteczka Pierwszej Pomocy</h1>
+        <h3>
+            <p>
+                <span id="login">Zaloguj się</span>
+                <span style="padding-left: 5px; padding-right: 5px;"> / </span>
+                <span id="register">Zarejestruj</span>
+            </p>
+        </h3>
+    </header>
+    <main class="entry" style="padding-top: 5%;">
+        <div>
+            <h3>
+                Które elementy apteczki zostały wykorzystane
+            </h3>
+            <div class="main">
+                <form id="form_style">
+                    <div class="checkbox-grid">
+                        <div class="line">
+                            <label for="bandage">Bandaż zwykły</label>
+                            <input title="bandage" type="checkbox" id="bandage" name="bandage">
+
+                            <label for="elastic">Bandaż elastyczny</label>
+                            <input title="elastic" type="checkbox" id="elastic" name="elastic">
+                        </div>
+
+                        <div class="line">
+                            <label for="splint">Szyna typu splint</label>
+                            <input title="splint" type="checkbox" id="splint" name="splint">
+
+                            <label for="plaster_mark">Plaster na odcisk</label>
+                            <input title="plaster_mark" type="checkbox" id="plaster_mark" name="plaster_mark">
+                        </div>
+
+                        <div class="line">
+                            <label for="plaster">Plaster na rany</label>
+                            <input title="plaster" type="checkbox" id="plaster" name="plaster">
+                            <label for="plaster_mark_2">Plaster na odcisk</label>
+                            <input title="plaster_mark_2" type="checkbox" id="plaster_mark_2" name="plaster_mark_2">
+                        </div>
+
+                        <div class="line">
+                            <label for="spirit">Środek dezynfekujący</label>
+                            <input title="spirit" type="checkbox" id="spirit" name="spirit">
+
+                            <label for="foil_nrc">Folia NRC</label>
+                            <input title="foil_nrc" type="checkbox" id="foil_nrc" name="foil_nrc">
+                        </div>
+
+                        <div class="line">
+                            <label for="mask">Maska RKO</label>
+                            <input title="mask" type="checkbox" id="mask" name="mask">
+
+                            <label for="bloodsucker">Zestaw na kleszcze</label>
+                            <input title="bloodsucker" type="checkbox" id="bloodsucker" name="bloodsucker">
+                        </div>
+
+                        <div class="line">
+                            <label for="latex">Rękawiczki lateksowe</label>
+                            <input title="latex" type="checkbox" id="latex" name="latex">
+
+                            <label for="dust_wound">Proszek na rany</label>
+                            <input title="dust_wound" type="checkbox" id="dust_wound" name="dust_wound">
+                        </div>
+                        <div class="line">
+                            <label for="medpack">Pakiet apteczny</label>
+                            <input title="medpack" type="checkbox" id="medpack" name="medpack">
+                        </div>
+                    </div>
+                </form>
+                <div class="center">
+                    <button class="button_style" id="button">Wyślij</button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+<script>
+    $("#button").on("click", () => {
+        let form = new FormData();
+        let bandage = $("#bandage").prop("checked")
+        if (bandage) {
+            form.append("bandage", 1)
+        } else {
+            form.append("bandage", 0)
+        }
+        //
+        let elastic = $("#elastic").prop("checked")
+        if (elastic) {
+            form.append("elastic", 1)
+        } else {
+            form.append("elastic", 0)
+        }
+        let splint = $("#splint").prop("checked")
+        if (splint) {
+            form.append("split", 1)
+        } else {
+            form.append("split", 0)
+        }
+        let plaster_mark = $("#plaster_mark").prop("checked")
+        if (plaster_mark) {
+            form.append("plaster_mark", 1)
+        } else {
+            form.append("plaster_mark", 0)
+        }
+        let plaster_mark_2 = $("#plaster_mark_2").prop("checked")
+        if (plaster_mark_2) {
+            form.append("plaster_mark_2", 1)
+        } else {
+            form.append("plaster_mark_2", 0)
+        }
+        let spirit = $("#spirit").prop("checked")
+        if (spirit) {
+            form.append("spirit", 1)
+        } else {
+            form.append("spirit", 0)
+        }
+        let foil_nrc = $("#foil_nrc").prop("checked")
+        if (foil_nrc) {
+            form.append("foil_nrc", 1)
+        } else {
+            form.append("foil_nrc", 0)
+        }
+        let mask = $("#mask").prop("checked")
+        if (mask) {
+            form.append("mask", 1)
+        } else {
+            form.append("mask", 0)
+        }
+        let bloodsucker = $("#bloodsucker").prop("checked")
+        if (bloodsucker) {
+            form.append("bloodsucker", 1)
+        } else {
+            form.append("bloodsucker", 0)
+        }
+        let latex = $("#latex").prop("checked")
+        if (latex) {
+            form.append("latex", 1)
+        } else {
+            form.append("latex", 0)
+        }
+        let dust_wound = $("#dust_wound").prop("checked")
+        if (dust_wound) {
+            form.append("dust_wound", 1)
+        } else {
+            form.append("dust_wound", 0)
+        }
+        let medpack = $("#medpack").prop("checked")
+        if (medpack) {
+            form.append("medpack", 1)
+        } else {
+            form.append("medpack", 0)
+        }
+        let c = 0;
+        for (const [key, value] of form.entries()) {
+            if (value === "1") {
+                c++
+            }
+        }
+        if (c === 0) {
+            alert("Prosze wybrać wykorzystane przedmioty")
+        } else {
+            $.ajax({
+                url: 'http://192.168.0.1',
+                data: form,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function (data) {
+                    alert("Wiadomość została wysłana")
+                    console.log(`Working: ${data}`);
+                },
+                error: function (error) {
+                    alert("Wiadomość nie została wysłana")
+                    console.log(`Error: ${error}`);
+                }
+            });
+        }
+        console.log(1)
+    })
+    $("#login").on("click", () => {
+        window.location.href = "login.html"
+    })
+    $("#register").on("click", () => {
+        window.location.href = "register.html"
+    })
+</script>
+
+</html>
+<style scoped>
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: larger;
+    }
+
+    #form_style {
+        padding-bottom: 5px;
+    }
+
+    .center {
+        border-top: 1px solid;
+        padding-top: 10px;
+        padding-bottom: 5px;
+    }
+
+    .checkbox-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .line {
+        display: contents;
+    }
+
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+    }
+
+    label {
+        margin-right: 10px;
+    }
+
+    input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+
+    .entry {
+        border: 2px solid black;
+        border-radius: 5px;
+        width: 50%;
+        text-align: center;
+        margin: auto;
+    }
+
+
+    #login {
+        transform: translateY(-1px);
+        padding: 5px;
+        background-color: white;
+        border-radius: 5px;
+    }
+
+    #login:hover {
+        cursor: pointer;
+        transform: translateY(-1px);
+        padding: 5px;
+        background-color: #FF4742;
+        border-radius: 5px;
+    }
+
+    #register {
+        transform: translateY(-1px);
+        border-radius: 5px;
+        padding: 5px;
+        background-color: white;
+    }
+
+    #register:hover {
+        cursor: pointer;
+        transform: translateY(-1px);
+        border-radius: 5px;
+        padding: 5px;
+        background-color: #FF4742;
+    }
+
+    .button_style {
+        background: #FF4742;
+        border: 1px solid #FF4742;
+        border-radius: 6px;
+        box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 16px;
+        min-height: 40px;
+        outline: 0;
+        padding: 12px 14px;
+        text-align: center;
+        text-rendering: geometricprecision;
+        text-transform: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: middle;
+    }
+
+    .button_style:hover,
+    .button_style:active {
+        background-color: initial;
+        background-position: 0 0;
+        color: #FF4742;
+    }
+
+    .button_style:active {
+        opacity: .5;
+    }
+</style>
