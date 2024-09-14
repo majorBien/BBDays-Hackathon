@@ -251,7 +251,7 @@ IGNORE_EXTRA_COMPONENT:UNINITIALIZED=
 PROJECT_SOURCE_DIR:UNINITIALIZED=/home/majorbien/eclipse-workspace/LoraFirstAidKit
 
 //No help, variable specified on the command line.
-PYTHON:UNINITIALIZED=/home/majorbien/.espressif/python_env/idf5.2_py3.12_env/bin/python
+PYTHON:UNINITIALIZED=python
 
 //No help, variable specified on the command line.
 PYTHON_DEPS_CHECKED:UNINITIALIZED=1
