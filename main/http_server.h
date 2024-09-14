@@ -10,6 +10,7 @@
 #define MAIN_HTTP_SERVER_H_
 
 
+
 typedef enum http_server_message
 {
 	HTTP_MSG_WIFI_CONNECT_INIT = 0,
@@ -20,6 +21,8 @@ typedef enum http_server_message
 	HTTP_MSG_FIRMWARE_UPATE_INITIALIZED,
 	HTTP_MSG_USER_LOGIN_DONE,
 	HTTP_MGS_USER_LOGIN_FAIL,
+	HTTP_MSG_USER_REGISTER_DONE,
+	HTTP_MGS_USER_REGISTER_FAIL,
 	HTTP_MGS_FIRST_AID_KIT_STATUS
 } http_server_message_e;
 
@@ -30,7 +33,6 @@ typedef struct http_server_queue_message
 } http_server_queue_message_t;
 
 
-//BaseType_t http_server_monitor_send_message(http_server_message_e msgID);
 
 void http_server_start(void);
 
