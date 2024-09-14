@@ -6,10 +6,6 @@
  */
 
 
-/* The example of ESP-IDF
- *
- * This sample code is in the public domain.
- */
 
 #include <stdio.h>
 #include <inttypes.h>
@@ -20,6 +16,7 @@
 #include "esp_log.h"
 
 #include "ra01s.h"
+#include "tasks_settings.h"
 
 static const char *TAG = "MAIN";
 
@@ -111,7 +108,7 @@ void loraInit(void)
 
 void loraTaskStart(void)
 {
-	xTaskCreatePinnedToCore(&task_tx,"loraSend", 1024*4, NULL, 5, NULL, 0);
+	xTaskCreatePinnedToCore(&task_tx,"loraSend", LORA_SEND_STACK_SIZE, NULL, LORA_SEND_PRIORITY, NULL, LORA_SEND_CORE_ID);
 }
 
 
