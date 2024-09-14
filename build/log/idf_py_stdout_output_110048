@@ -1,0 +1,74 @@
+[1/5] cd /home/majorbien/eclipse-workspace/LoraFirstAidKit/build/esp-idf/esptool_py && /home/majorbien/.espressif/python_env/idf5.2_py3.12_env/bin/python /opt/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/majorbien/eclipse-workspace/LoraFirstAidKit/build/partition_table/partition-table.bin /home/majorbien/eclipse-workspace/LoraFirstAidKit/build/lora.bin
+lora.bin binary size 0xc6cf0 bytes. Smallest app partition is 0x1f0000 bytes. 0x129310 bytes (60%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cd /home/majorbien/eclipse-workspace/LoraFirstAidKit/build/bootloader/esp-idf/esptool_py && /home/majorbien/.espressif/python_env/idf5.2_py3.12_env/bin/python /opt/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/majorbien/eclipse-workspace/LoraFirstAidKit/build/bootloader/bootloader.bin
+Bootloader binary size 0x6860 bytes. 0x7a0 bytes (7%) free.
+[2/3] cd /opt/esp-idf/components/esptool_py && /home/majorbien/.espressif/tools/cmake/3.24.0/bin/cmake -D IDF_PATH=/opt/esp-idf -D "SERIAL_TOOL=/home/majorbien/.espressif/python_env/idf5.2_py3.12_env/bin/python;;/opt/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/home/majorbien/eclipse-workspace/LoraFirstAidKit/build -P /opt/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool.py --chip esp32 -p /dev/ttyUSB0 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 4MB 0x1000 bootloader/bootloader.bin 0x10000 lora.bin 0x8000 partition_table/partition-table.bin 0xd000 ota_data_initial.bin
+esptool.py v4.7.0
+Serial port /dev/ttyUSB0
+Connecting..........
+Chip is ESP32-D0WD-V3 (revision v3.1)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: d8:13:2a:7e:e6:bc
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x000d6fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+Flash will be erased from 0x0000d000 to 0x0000efff...
+Compressed 26720 bytes to 16362...
+Writing at 0x00001000... (100 %)
+Wrote 26720 bytes (16362 compressed) at 0x00001000 in 0.8 seconds (effective 259.8 kbit/s)...
+Hash of data verified.
+Compressed 814320 bytes to 509083...
+Writing at 0x00010000... (3 %)
+Writing at 0x0001d62d... (6 %)
+Writing at 0x00026e36... (9 %)
+Writing at 0x0002b966... (12 %)
+Writing at 0x00035728... (15 %)
+Writing at 0x0003d318... (18 %)
+Writing at 0x00042ed6... (21 %)
+Writing at 0x000487d3... (25 %)
+Writing at 0x0004e809... (28 %)
+Writing at 0x0005403a... (31 %)
+Writing at 0x00059c37... (34 %)
+Writing at 0x0005f80a... (37 %)
+Writing at 0x000652d2... (40 %)
+Writing at 0x0006b25b... (43 %)
+Writing at 0x00070a7e... (46 %)
+Writing at 0x00075cb7... (50 %)
+Writing at 0x0007b285... (53 %)
+Writing at 0x000804dc... (56 %)
+Writing at 0x00085c27... (59 %)
+Writing at 0x0008b341... (62 %)
+Writing at 0x00090cfb... (65 %)
+Writing at 0x0009672b... (68 %)
+Writing at 0x0009c199... (71 %)
+Writing at 0x000a1ec9... (75 %)
+Writing at 0x000a8370... (78 %)
+Writing at 0x000adca6... (81 %)
+Writing at 0x000b5784... (84 %)
+Writing at 0x000bf37c... (87 %)
+Writing at 0x000c4f7e... (90 %)
+Writing at 0x000caed4... (93 %)
+Writing at 0x000d0eeb... (96 %)
+Writing at 0x000d6533... (100 %)
+Wrote 814320 bytes (509083 compressed) at 0x00010000 in 12.1 seconds (effective 538.0 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 128...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (128 compressed) at 0x00008000 in 0.1 seconds (effective 464.1 kbit/s)...
+Hash of data verified.
+Compressed 8192 bytes to 31...
+Writing at 0x0000d000... (100 %)
+Wrote 8192 bytes (31 compressed) at 0x0000d000 in 0.1 seconds (effective 1067.2 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
