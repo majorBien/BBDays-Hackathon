@@ -78,6 +78,13 @@
                             <input title="medpack" type="checkbox" id="medpack" name="medpack">
                         </div>
                     </div>
+                    <div style="margin-top: 5px; border-top: 1px black solid;">
+                        <div>
+                            <label for="uwaga">Uwagi</label>
+                            <input title="uwaga" type="checkbox" id="uwaga" name="uwaga">
+                        </div>
+                        <textarea title="warning" name="warning" id="warning" rows="4"></textarea>
+                    </div>
                 </form>
                 <div class="center">
                     <button class="button_style" id="button">Wyślij</button>
@@ -91,6 +98,7 @@
     </footer>
 </body>
 <script>
+    $("#warning").hide()
     $("#button").on("click", () => {
         let form = new FormData();
         let bandage = $("#bandage").prop("checked")
@@ -166,33 +174,41 @@
         } else {
             form.append("medpack", 0)
         }
+        let text_content = $("#warning").val()
+        if (text_content.length > 0) {
+            form.append("warning", text_content)
+        }
         let c = 0;
         for (const [key, value] of form.entries()) {
             if (value === "1") {
                 c++
             }
         }
+        let n = JSON.stringify(Object.fromEntries(form))
         if (c === 0) {
             alert("Prosze wybrać wykorzystane przedmioty")
         } else {
             $.ajax({
                 url: 'http://192.168.0.1/index',
-                data: form,
-                processData: false,
-                contentType: "application/json",
+                data: n,
                 dataType: "json",
+                contentType: "application/json; charset=utf-8",
                 type: 'POST',
                 success: function (data) {
                     alert("Wiadomość została wysłana")
                     console.log(`Working: ${data}`);
                 },
                 error: function (error) {
-                    alert("Wiadomość nie została wysłana")
+                    alert(`Wiadomość nie została wysłana: \n${error}\n${form}`)
                     console.log(`Error: ${error}`);
                 }
             });
         }
         console.log(1)
+    })
+    let bandage = $("#bandage").prop("checked")
+    $("#uwaga").on("click", () => {
+        $("#warning").toggle();
     })
     $("#login").on("click", () => {
         window.location.href = "/login.html"
@@ -217,6 +233,7 @@
         border-top: 1px solid;
         padding-top: 10px;
         padding-bottom: 5px;
+        margin-bottom: 10px;
     }
 
     .checkbox-grid {

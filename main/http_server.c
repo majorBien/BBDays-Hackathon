@@ -242,23 +242,7 @@ static httpd_handle_t http_server_configure(void)
 		};
 		httpd_register_uri_handler(http_server_handle, &jquery_js);
 
-/*
-		httpd_uri_t json_post1 = {
-    			.uri = "/register",
-   				 .method = HTTP_POST,
-   				 .handler = http_server_json_handler,
-   				 .user_ctx = NULL
-		};
-		httpd_register_uri_handler(http_server_handle, &json_post1);
-				
-		httpd_uri_t json_post2 = {
-    			.uri = "/login",
-   				 .method = HTTP_POST,
-   				 .handler = http_server_json_handler,
-   				 .user_ctx = NULL
-		};
-		httpd_register_uri_handler(http_server_handle, &json_post2);
-*/		
+
 		httpd_uri_t json_post3 = {
     			.uri = "/index",
    				 .method = HTTP_POST,
