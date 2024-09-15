@@ -4,9 +4,6 @@ cmake_minimum_required(VERSION 3.16)
 if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "")
   file(REMOVE_RECURSE
   "Index.html.S"
-  "Login.html.S"
-  "Profile.html.S"
-  "Register.html.S"
   "bootloader/bootloader.bin"
   "bootloader/bootloader.elf"
   "bootloader/bootloader.map"
@@ -21,9 +18,12 @@ if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "")
   "jquery.js.S"
   "ldgen_libraries"
   "ldgen_libraries.in"
+  "login.html.S"
   "lora.bin"
   "lora.map"
+  "profile.html.S"
   "project_elf_src_esp32.c"
+  "register.html.S"
   "x509_crt_bundle.S"
   )
 endif()

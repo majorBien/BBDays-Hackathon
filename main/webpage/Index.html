@@ -176,10 +176,11 @@
             alert("Prosze wybrać wykorzystane przedmioty")
         } else {
             $.ajax({
-                url: 'http://192.168.0.1',
+                url: 'http://192.168.0.1/index',
                 data: form,
                 processData: false,
-                contentType: false,
+                contentType: "application/json",
+                dataType: "json",
                 type: 'POST',
                 success: function (data) {
                     alert("Wiadomość została wysłana")
@@ -194,10 +195,10 @@
         console.log(1)
     })
     $("#login").on("click", () => {
-        window.location.href = "login.html"
+        window.location.href = "/login.html"
     })
     $("#register").on("click", () => {
-        window.location.href = "register.html"
+        window.location.href = "/register.html"
     })
 </script>
 

@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "lora",
-    "project_version":    "7a283bd-dirty",
+    "project_version":    "a29d77f-dirty",
     "project_path":       "/home/majorbien/eclipse-workspace/LoraFirstAidKit",
     "idf_path":           "/opt/esp-idf",
     "build_dir":          "/home/majorbien/eclipse-workspace/LoraFirstAidKit/build",
@@ -805,7 +805,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/majorbien/eclipse-workspace/LoraFirstAidKit/build/esp-idf/main/libmain.a",
-            "sources": [ "/home/majorbien/eclipse-workspace/LoraFirstAidKit/main/main.c", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/main/lora.c", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/main/wifi.c", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/main/gpio.c", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/main/http_server.c", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/build/Index.html.S", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/build/Login.html.S", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/build/Profile.html.S", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/build/Register.html.S", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/build/jquery.js.S" ],
+            "sources": [ "/home/majorbien/eclipse-workspace/LoraFirstAidKit/main/main.c", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/main/lora.c", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/main/wifi.c", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/main/gpio.c", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/main/http_server.c", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/build/Index.html.S", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/build/login.html.S", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/build/profile.html.S", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/build/register.html.S", "/home/majorbien/eclipse-workspace/LoraFirstAidKit/build/jquery.js.S" ],
             "include_dirs": [ "." ]
         },
         "mbedtls": {

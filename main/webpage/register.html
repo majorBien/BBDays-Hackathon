@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <h3></h3>
+        <div id="form">
+            <div id="form-group">
+                <label for="fn">Imię: </label>
+                <input type="text" name="fn" id="fn">
+            </div>
+            <div id="form-group">
+                <label for="ln">Nazwisko: </label>
+                <input type="text" name="ln" id="ln">
+            </div>
+            <div id="form-group">
+                <label for="l">Login: </label>
+                <input type="text" name="l" id="l">
+            </div>
+            <div id="form-group">
+                <label for="p">Hasło: </label>
+                <input type="password" name="p" id="p">
+            </div>
+            <div id="form-group">
+                <label for="p2">Powtórz hasło: </label>
+                <input type="password" name="p2" id="p2">
+            </div>
+            <div id="form-group">
+                <button class="button_style" id="register" type="button">Zarejestruj się</button>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
+<script>
+    let c = false;
+    function containsInteger(str) {
+        const iPattern = /\d/;
+        return iPattern.test(str);
+    }
+    function containsSpecial(str) {
+        const cPattern = /[!@#$%^&*(),.?":{}|<>]/;
+        return cPattern.test(str);
+    }
+    function a_manual(value, case_n) {
+        console.log(value, case_n)
+        if (!c) {
+            if (case_n === 0) {
+                alert(`${value} pole nie może być puste`)
+            }
+            if (case_n === 1) {
+                alert(`${value} nie może zawierać znaków specjalnych`)
+            }
+            if (case_n === 2) {
+                alert(`${value} nie może zawierać liczb`)
+            }
+            if (case_n === 3) {
+                alert(`${value} nie może zawierać liczb ani znaków specjalnych`)
+            }
+            if (case_n === 4) {
+                alert(`${value} nie są takie same`)
+            }
+            if (case_n === 5) {
+                alert(`${value} nie mogą być puste`)
+            }
+            if (case_n === 6) {
+                alert(`${value} nie może być krótsze niż 8 znaków`)
+            }
+        }
+    }
+    $("#register").on("click", () => {
+        $("#register").attr('disabled', 'disabled');
+        let fn = $("#fn").val();
+        let ln = $("#ln").val();
+        let l = $("#l").val();
+        let p = $("#p").val();
+        let p2 = $("#p2").val();
+        if (containsInteger(fn) || containsSpecial(fn)) {
+            a_manual("Imię", 3)
+            c = true;
+        }
+        if (containsInteger(ln) || containsSpecial(ln)) {
+            a_manual("Nazwisko", 3)
+            c = true;
+        }
+        if (containsInteger(l) || containsSpecial(l)) {
+            a_manual("Login", 1)
+            c = true;
+        }
+        if (p !== p2) {
+            a_manual("Hasła", 4)
+            c = true;
+        }
+        if (fn.length <= 0 || ln.length <= 0 || l.length <= 0) {
+            a_manual("Pola", 5)
+            c = true;
+        }
+        if (p.length < 8 || p2.length < 8) {
+            a_manual("Hasło", 6)
+            c = true;
+        }
+        $.ajax({
+            url: 'http://192.168.0.1/register',
+            data: {
+                first_name: fn,
+                last_name: ln,
+                login: l,
+                password: p
+            },
+            processData: false,
+            contentType: "application/json",
+            dataType: "json",
+            type: 'POST',
+            success: function (data) {
+                alert("Użytkownik został zarejestrowany")
+                console.log(`Working: ${data}`);
+                $("#register").prop("disabled", false);
+            },
+            error: function (error) {
+                alert("Nie udało się zarejestrować użytkownika")
+                console.log(`Error: ${error}`);
+                $("#register").prop("disabled", false);
+            }
+        });
+        c = false;
+    })
+</script>
+<style scoped>
+    #form {
+        width: 50%;
+        text-align: center;
+        border: 1px black solid;
+        border-radius: 5px;
+        padding: 10px;
+        margin: auto;
+    }
+
+    #form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    label {
+        width: 150px;
+        margin-right: 10px;
+    }
+
+    input {
+        flex: 1;
+    }
+
+    .main {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: larger;
+    }
+
+    .button_style {
+        margin: auto;
+        background: #FF4742;
+        border: 1px solid #FF4742;
+        border-radius: 6px;
+        box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 16px;
+        min-height: 40px;
+        outline: 0;
+        padding: 12px 14px;
+        text-align: center;
+        text-rendering: geometricprecision;
+        text-transform: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: middle;
+    }
+
+    .button_style:hover,
+    .button_style:active {
+        background-color: initial;
+        background-position: 0 0;
+        color: #FF4742;
+    }
+
+    .button_style:active {
+        opacity: .5;
+    }
+</style>
