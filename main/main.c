@@ -32,7 +32,7 @@ void app_main()
 	loraInit();
 	gpioConfig();
 		
-	//loraTaskStart();	
+	loraTaskStart();	
 	gpioTaskStart();
 	wifi_app_start();
 }

@@ -10,6 +10,8 @@
 #define MAIN_HTTP_SERVER_H_
 
 
+extern char json_buffer[];
+
 
 typedef enum http_server_message
 {

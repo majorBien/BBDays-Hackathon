@@ -16,7 +16,11 @@
 
 #include <string.h> 
 #include <cJSON.h> 
+#include "lora.h"
 
+char json_buffer[256]; 
+
+static SemaphoreHandle_t json_mutex;
 
 static const char TAG[] = "http_server";
 
@@ -262,6 +266,7 @@ static httpd_handle_t http_server_configure(void)
 
 void http_server_start(void)
 {
+	json_mutex = xSemaphoreCreateMutex();
 	if (http_server_handle == NULL)
 	{
 		http_server_handle = http_server_configure();
@@ -291,15 +296,14 @@ BaseType_t http_server_monitor_send_message(http_server_message_e msgID)
 	return xQueueSend(http_server_monitor_queue_handle, &msg, portMAX_DELAY);
 }
 
-
 static esp_err_t http_server_json_handler3(httpd_req_t *req)
 {
     ESP_LOGI(TAG, "JSON data requested");
 
-
-    char buf[1024] = { 0 };
+    char buf[256] = { 0 };
     int ret, total_length = 0;
 
+    // Odbierz JSON od klienta
     do {
         ret = httpd_req_recv(req, buf + total_length, sizeof(buf) - total_length - 1);
         if (ret == HTTPD_SOCK_ERR_TIMEOUT) {
@@ -314,7 +318,10 @@ static esp_err_t http_server_json_handler3(httpd_req_t *req)
         buf[total_length] = '\0';
     } while (ret >= sizeof(buf) - total_length); 
 
-    ESP_LOGI(TAG, "Received JSON: %s", buf);             
+    ESP_LOGI(TAG, "Received JSON: %s", buf);
+
+    // Zapisz JSON do zmiennej globalnej
+    strncpy(json_buffer, buf, sizeof(json_buffer));
 
     cJSON *json = cJSON_Parse(buf);
     if (json == NULL) {
@@ -324,12 +331,10 @@ static esp_err_t http_server_json_handler3(httpd_req_t *req)
 
     cJSON_Delete(json);
 
-
+    // Wyślij odpowiedź
     const char *resp_str = "Data received successfully!";
     httpd_resp_send(req, resp_str, strlen(resp_str));
 
     return ESP_OK;
-
 }
-
 
