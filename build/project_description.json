@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "lora",
-    "project_version":    "311872f-dirty",
+    "project_version":    "37089f2-dirty",
     "project_path":       "/home/majorbien/eclipse-workspace/LoraFirstAidKit",
     "idf_path":           "/opt/esp-idf",
     "build_dir":          "/home/majorbien/eclipse-workspace/LoraFirstAidKit/build",

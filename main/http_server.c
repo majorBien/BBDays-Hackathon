@@ -433,6 +433,3 @@ static esp_err_t http_server_json_handler3(httpd_req_t *req)
     httpd_resp_send(req, ok, strlen(ok));
     return ESP_OK;
 }
-
-
-

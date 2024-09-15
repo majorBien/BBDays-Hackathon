@@ -24,7 +24,7 @@ void task_tx(void *pvParameters)
 {
 	ESP_LOGI(pcTaskGetName(NULL), "Start");
 	uint8_t buffer[256]; 
-
+	ESP_LOGI(pcTaskGetName(NULL), "Waiting for Json...");
 	while(1) {
 		xSemaphoreTake(json_mutex, portMAX_DELAY);
 
@@ -33,12 +33,13 @@ void task_tx(void *pvParameters)
 			ESP_LOGI(pcTaskGetName(NULL), "%d byte packet sent: %s", txLen, buffer);
    			memset(json_buffer, 0, 256);  
     		ESP_LOGI(pcTaskGetName(NULL), "json_buffer cleared after transmission.");
+    		ESP_LOGI(pcTaskGetName(NULL), "Waiting for Json...");
 
 			if (LoRaSend(buffer, txLen, SX126x_TXMODE_SYNC) == false) {
 				ESP_LOGE(pcTaskGetName(NULL), "LoRaSend fail");
 			}
 		} else {
-			ESP_LOGI(pcTaskGetName(NULL), "JSON buffer is empty, skipping transmission.");
+			
 		}
 
 		xSemaphoreGive(json_mutex);

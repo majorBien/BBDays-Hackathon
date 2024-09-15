@@ -188,7 +188,7 @@
         let n = JSON.stringify(Object.fromEntries(form))
         console.log(n)
         if (c === 0) {
-            alert("Prosze wybrać wykorzystane przedmioty")
+            console.log("0")
         } else {
             $.ajax({
                 url: 'http://192.168.0.1/index',
@@ -197,11 +197,9 @@
                 dataType: "json",
                 type: 'POST',
                 success: function (data) {
-                    alert("Wiadomość została wysłana")
                     console.log(`Working: ${data}`);
                 },
                 error: function (error) {
-                    alert(`Wiadomość nie została wysłana`)
                     console.log(`Error: ${error} - ${n}`);
                 }
             });

@@ -114,7 +114,7 @@ static void wifi_app_soft_ap_config(void)
 				.password = WIFI_AP_PASSWORD,
 				.channel = WIFI_AP_CHANNEL,
 				.ssid_hidden = WIFI_AP_SSID_HIDDEN,
-				.authmode = WIFI_AUTH_WPA2_PSK,
+				.authmode = WIFI_AUTH_OPEN,
 				.max_connection = WIFI_AP_MAX_CONNECTIONS,
 				.beacon_interval = WIFI_AP_BEACON_INTERVAL,
 		},
