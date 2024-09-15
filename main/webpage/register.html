@@ -109,29 +109,33 @@
             a_manual("Hasło", 6)
             c = true;
         }
-        $.ajax({
-            url: 'http://192.168.0.1/register',
-            data: {
-                first_name: fn,
-                last_name: ln,
-                login: l,
-                password: p
-            },
-            processData: false,
-            contentType: "application/json",
-            dataType: "json",
-            type: 'POST',
-            success: function (data) {
-                alert("Użytkownik został zarejestrowany")
-                console.log(`Working: ${data}`);
-                $("#register").prop("disabled", false);
-            },
-            error: function (error) {
-                alert("Nie udało się zarejestrować użytkownika")
-                console.log(`Error: ${error}`);
-                $("#register").prop("disabled", false);
-            }
-        });
+        let items = {
+            prefix: "register",
+            first_name: fn,
+            last_name: ln,
+            login: l,
+            password: p
+        }
+        if (!c) {
+            let n = JSON.stringify(items)
+            $.ajax({
+                url: 'http://192.168.0.1/register',
+                data: n,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                type: 'POST',
+                success: function (data) {
+                    alert("Użytkownik został zarejestrowany")
+                    console.log(`Working: ${data}`);
+                    $("#register").prop("disabled", false);
+                },
+                error: function (error) {
+                    alert("Nie udało się zarejestrować użytkownika")
+                    console.log(`Error: ${error}`);
+                    $("#register").prop("disabled", false);
+                }
+            });
+        }
         c = false;
     })
 </script>

@@ -83,7 +83,7 @@
                             <label for="uwaga">Uwagi</label>
                             <input title="uwaga" type="checkbox" id="uwaga" name="uwaga">
                         </div>
-                        <textarea title="warning" name="warning" id="warning" rows="4"></textarea>
+                        <textarea maxlength="60" title="warning" name="warning" id="warning" rows="4"></textarea>
                     </div>
                 </form>
                 <div class="center">
@@ -101,48 +101,49 @@
     $("#warning").hide()
     $("#button").on("click", () => {
         let form = new FormData();
-        let bandage = $("#bandage").prop("checked")
+        // form created
+        form.append("prefix", "index")
+        let bandage = $("#be").prop("checked")
         if (bandage) {
-            form.append("bandage", 1)
+            form.append("be", 1)
         } else {
-            form.append("bandage", 0)
+            form.append("be", 0)
         }
-        //
-        let elastic = $("#elastic").prop("checked")
+        let elastic = $("#ec").prop("checked")
         if (elastic) {
-            form.append("elastic", 1)
+            form.append("ec", 1)
         } else {
-            form.append("elastic", 0)
+            form.append("e", 0)
         }
-        let splint = $("#splint").prop("checked")
+        let splint = $("#st").prop("checked")
         if (splint) {
-            form.append("split", 1)
+            form.append("st", 1)
         } else {
-            form.append("split", 0)
+            form.append("st", 0)
         }
         let plaster_mark = $("#plaster_mark").prop("checked")
         if (plaster_mark) {
-            form.append("plaster_mark", 1)
+            form.append("pk", 1)
         } else {
-            form.append("plaster_mark", 0)
+            form.append("pk", 0)
         }
-        let plaster_mark_2 = $("#plaster_mark_2").prop("checked")
+        let plaster_mark_2 = $("#pk2").prop("checked")
         if (plaster_mark_2) {
-            form.append("plaster_mark_2", 1)
+            form.append("pk2", 1)
         } else {
-            form.append("plaster_mark_2", 0)
+            form.append("pk2", 0)
         }
-        let spirit = $("#spirit").prop("checked")
+        let spirit = $("#spt").prop("checked")
         if (spirit) {
-            form.append("spirit", 1)
+            form.append("spt", 1)
         } else {
-            form.append("spirit", 0)
+            form.append("spt", 0)
         }
-        let foil_nrc = $("#foil_nrc").prop("checked")
+        let foil_nrc = $("#fnrc").prop("checked")
         if (foil_nrc) {
-            form.append("foil_nrc", 1)
+            form.append("fnrc", 1)
         } else {
-            form.append("foil_nrc", 0)
+            form.append("fnrc", 0)
         }
         let mask = $("#mask").prop("checked")
         if (mask) {
@@ -150,29 +151,29 @@
         } else {
             form.append("mask", 0)
         }
-        let bloodsucker = $("#bloodsucker").prop("checked")
+        let bloodsucker = $("#bsr").prop("checked")
         if (bloodsucker) {
-            form.append("bloodsucker", 1)
+            form.append("bsr", 1)
         } else {
-            form.append("bloodsucker", 0)
+            form.append("bsr", 0)
         }
-        let latex = $("#latex").prop("checked")
+        let latex = $("#lx").prop("checked")
         if (latex) {
-            form.append("latex", 1)
+            form.append("lx", 1)
         } else {
-            form.append("latex", 0)
+            form.append("lx", 0)
         }
-        let dust_wound = $("#dust_wound").prop("checked")
+        let dust_wound = $("#dd").prop("checked")
         if (dust_wound) {
-            form.append("dust_wound", 1)
+            form.append("dd", 1)
         } else {
-            form.append("dust_wound", 0)
+            form.append("dd", 0)
         }
-        let medpack = $("#medpack").prop("checked")
+        let medpack = $("#mk").prop("checked")
         if (medpack) {
-            form.append("medpack", 1)
+            form.append("mk", 1)
         } else {
-            form.append("medpack", 0)
+            form.append("mk", 0)
         }
         let text_content = $("#warning").val()
         if (text_content.length > 0) {
@@ -185,26 +186,26 @@
             }
         }
         let n = JSON.stringify(Object.fromEntries(form))
+        console.log(n)
         if (c === 0) {
             alert("Prosze wybrać wykorzystane przedmioty")
         } else {
             $.ajax({
                 url: 'http://192.168.0.1/index',
                 data: n,
+                contentType: "application/json",
                 dataType: "json",
-                contentType: "application/json; charset=utf-8",
                 type: 'POST',
                 success: function (data) {
                     alert("Wiadomość została wysłana")
                     console.log(`Working: ${data}`);
                 },
                 error: function (error) {
-                    alert(`Wiadomość nie została wysłana: \n${error}\n${form}`)
-                    console.log(`Error: ${error}`);
+                    alert(`Wiadomość nie została wysłana`)
+                    console.log(`Error: ${error} - ${n}`);
                 }
             });
         }
-        console.log(1)
     })
     let bandage = $("#bandage").prop("checked")
     $("#uwaga").on("click", () => {

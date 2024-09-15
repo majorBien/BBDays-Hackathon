@@ -51,11 +51,17 @@
         if (login === "admin" && password === "admin") {
 
         } else {
+            let items = {
+                prefix: "login",
+                login: login,
+                password: password
+            }
+            let n = JSON.stringify(items)
+            console.log(n)
             $.ajax({
                 url: 'http://192.168.0.1/login',
-                data: { login, password },
-                processData: false,
-                contentType: "application/json",
+                data: n,
+                contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 type: 'POST',
                 success: function (data) {
