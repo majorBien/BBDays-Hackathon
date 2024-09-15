@@ -333,8 +333,9 @@ static esp_err_t http_server_json_handler3(httpd_req_t *req)
 
     // Wyślij odpowiedź
     const char *resp_str = "Data received successfully!";
-    httpd_resp_send(req, resp_str, strlen(resp_str));
-
+    //httpd_resp_send(req, "resp_str", strlen(resp_str));
+    char * ok = "200";
+    httpd_resp_send(req, ok, strlen(ok));
     return ESP_OK;
 }
 
